@@ -1,0 +1,36 @@
+﻿@model UpdateProductDto
+@{
+    ViewData["Title"] = "Ürün Güncelle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3>Ürün Güncelle</h3>
+<form method="post">
+    <input type="hidden" asp-for="ProductId" />
+    <div class="form-group">
+        <label>Ürün Adı</label>
+        <input type="text" asp-for="Name" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Görsel Url</label>
+        <input type="text" asp-for="ImageUrl" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label>Fiyat ₺</label>
+        <input type="number" asp-for="Price" class="form-control" step="0.01" required />
+    </div>
+    <div class="form-group">
+        <label>Stok</label>
+        <input type="number" asp-for="Stock" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <input type="checkbox" asp-for="IsActive" class="form-check-input" />
+        <label class="form-check-label">Durum</label>
+    </div>
+    <div class="form-group">
+        <label>Kategori</label>
+        <select class="form-control" asp-for="CategoryId" asp-items="@ViewBag.Categories" required>
+            <option disabled value="">Kategori Seçiniz</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Güncelle</button>
+</form>
